@@ -1,0 +1,10 @@
+@forward 'colors' with (
+  $primary: #5b4be9,
+  $secondary: #eeeeee,
+);
+
+@forward 'grid' with (
+  $breakpoints: ('xs': 0, 'sm': 756, 'md': 992, 'lg': 1200) !default,
+  $offset: 1rem !default,
+);
+

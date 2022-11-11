@@ -1,0 +1,78 @@
+@use '/src/styles/theme';
+
+.main {
+  flex-grow: 1;
+  background: theme.colors('secondary-100');
+  padding: 0 theme.$offset * 2;
+}
+
+.header {
+  hr {
+    border: none;
+    margin: 0;
+    border-bottom: 2px solid theme.colors('secondary');
+  }
+}
+
+.headerMenu {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  fill: theme.colors('secondary-500');
+  cursor: pointer;
+}
+
+.search {
+  display: inline-block;
+  position: relative;
+  margin-left: 1rem;
+  cursor: text;
+}
+
+.searchIcon {
+  position: absolute;
+  fill: theme.colors('secondary-500');
+  width: 1.3rem;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.4rem 1rem;
+  padding-left: 2rem;
+  margin: 0.5rem 0;
+  border: none;
+  background: theme.colors('secondary-100');
+  border-bottom: 1px solid transparent;
+  
+  &:focus {
+    border-bottom: 1px solid theme.colors('primary-100');
+  }
+}
+
+.newWordLink {
+  position: fixed;
+  display: inline-block;
+  font-size: 4rem;
+  line-height: 4rem;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  color: theme.colors('white');
+  background: theme.colors('primary');
+  bottom: 2rem;
+  right: 2rem;
+  border: none;
+  border-radius: 100%;
+  z-index: 99;
+  box-shadow: 0px 0px 10px 5px theme.colors('primary-100');
+
+  &:hover {
+    background: theme.colors('primary-500');;
+  }
+}

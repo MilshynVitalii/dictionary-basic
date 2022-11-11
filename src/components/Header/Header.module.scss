@@ -1,6 +1,49 @@
+@use '/src/styles/theme';
+
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid black;
+  position: absolute;
+  z-index: 100;
+  left: -100%;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background-color: theme.colors('primary-100');
+
+  & > .bg {
+    display: none;
+  }
+
+  &.open {
+    left: 0;
+    width: 215px;
+
+    & > .bg {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 100%;
+      width: calc(100vw - 100%);
+      background: rgba(0,0,0,0.2);
+    }
+  }
+
+  @include theme.media('md') {
+    position: relative;
+    left: -100%;
+
+    &.open > .bg {
+      display: none;
+    }
+  }
+}
+
+.homeLink {
+  margin: 1.5rem 2rem;
+  font-family: 'Caveat';
+  color: theme.colors('primary-600');
+
+  &:hover {
+    color: theme.colors('primary');
+  }
 }

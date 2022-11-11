@@ -1,17 +1,14 @@
 import { useSelector } from 'react-redux';
 
-import Dictionary from '../../components/Dictionary';
-import WordAdditionPanel from '../../components/WordAdditionPanel';
-import Filters from '../../components/Filters';
+import Dictionary from '../components/dictionary/Dictionary';
+import Filters from '../components/filters/Filters';
 
 function Home() {
   const words = useSelector(state => state.words);
 
   return (
     <>
-      <h2>My Words</h2>
       <Filters />
-      <WordAdditionPanel />
       <Dictionary words={words} />
     </>
   )

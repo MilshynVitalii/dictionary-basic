@@ -1,0 +1,49 @@
+@use 'sass:meta';
+@use 'sass:map';
+
+$is_mobile_first: true !default;
+$breakpoints: (
+  'xs': 0,
+  'sm': 600,
+  'md': 900,
+  'lg': 1200,
+  'xl': 1536
+) !default;
+
+$offset: 0 !default;
+
+@mixin container($margin: -$offset) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: $margin;
+  box-sizing: border-box;
+}
+
+@mixin grid($size, $args...) {
+  width: calc($size / 12 * 100% - $offset * 2);
+  margin: $offset;
+  box-sizing: border-box;
+  
+  @if $args {
+    @each $breakpoint, $size in meta.keywords($args) {
+      @media screen and (
+        if($is_mobile_first, min-width, max-width): #{map.get($breakpoints, $breakpoint) + px}
+      ) {
+        width: calc($size / 12 * 100% - $offset * 2);    
+      }
+    }
+  }
+}
+
+@mixin media($breakpoint) {
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @error 'No such breakpoint in {xs, sm, md, lg, xl}';
+  }
+
+  @media screen and (
+    if($is_mobile_first, min-width, max-width): #{map.get($breakpoints, $breakpoint) + px}
+  ) {
+    @content;  
+  }
+
+}
