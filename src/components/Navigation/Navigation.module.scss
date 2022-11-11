@@ -1,4 +1,21 @@
+@use 'sass:color';
+@use '/src/styles/theme';
+
 .navigation {
-  width: 150px;
-  border-right: 2px solid black;
+  padding-left: 1rem;
+  padding-right: 2rem;
+}
+
+.link {
+  display: block;
+  padding: 0.8rem 1rem;
+  padding-right: 0;
+  border-radius: 0 1.5rem 1.5rem  0;
+  font-weight: bold;
+  color: theme.colors('text-500');
+
+  &:hover {
+    background: linear-gradient(90deg, theme.colors('primary-100'), theme.colors('primary-300'));
+    color: theme.colors('primary');
+  }
 }

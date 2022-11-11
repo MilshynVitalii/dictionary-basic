@@ -1,0 +1,51 @@
+@use 'sass:meta';
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:string';
+
+@function _setColors($args...) {
+  $map: ();
+  @each $name, $color in meta.keywords($args) {
+    $map: map.set($map, $name, (
+      '100': color.scale($color, $lightness: 75%),
+      '200': color.scale($color, $lightness: 50%),
+      '300': color.scale($color, $lightness: 25%),
+      '400': $color,
+      '500': color.scale($color, $lightness: -25%),
+      '600': color.scale($color, $lightness: -50%),
+      '700': color.scale($color, $lightness: -75%),
+    ));
+  }
+
+  @return $map;
+}
+
+$primary: #1976d2 !default;
+$secondary: #9c27b0 !default;
+$text: #cccccc !default;
+$danger: red !default;
+$success: #2e7d32 !default;
+$white: #ffffff;
+$black: #000000;
+$_colors: _setColors(
+  $primary: $primary, 
+  $secondary: $secondary,
+  $text: $text,
+  $white: $white,
+  $black: $black,
+  $danger: $danger,
+  $success: $success,
+);
+
+@function colors($color-name) {
+  $ind: string.index($color-name, '-');
+
+  @if not $ind {
+    @return map.get($_colors, string.slice($color-name, 1), '400');
+  }
+
+  $name: string.slice($color-name, 1, $ind - 1);
+  $type: string.slice($color-name, $ind + 1);
+
+  @return map.get($_colors, $name, if($type, $type, 'main'));
+}

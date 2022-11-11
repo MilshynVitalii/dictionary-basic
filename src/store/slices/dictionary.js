@@ -11,7 +11,9 @@ const dictionarySlice = createSlice({
       definition: 'Definition of the word',
       synonyms: 'synonyms, of, the, word',
       antonyms: 'antonyms, of, the, word',
-      examples: 'array of sentences with the word usage examples'
+      examples: ['array of sentences with the word usage examples',
+      'array of sentences with the word usage examples, array of sentences with the word usage examples, array of sentences with the word usage examples',
+      'array of sentences with the word usage examples']
     },
     {
       id: 2,

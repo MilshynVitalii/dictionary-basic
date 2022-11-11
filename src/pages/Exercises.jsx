@@ -1,6 +1,6 @@
 function Exercises() {
   return (
-    <h2>Exercises</h2>
+    <p>Practice exercises here soon!</p>
   )
 }
 
