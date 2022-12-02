@@ -1,0 +1,58 @@
+@use '/src/styles/theme' with (
+  $offset: 0
+);
+
+.filters {
+  @include theme.container;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filterBtn {
+  width: 150px;
+  position: relative;
+  padding: 0.5rem;
+  background: transparent;
+  color: theme.colors('primary');
+  font-weight: bold;
+  border: none;
+  border-radius: 7px 7px 0 0;
+
+  p {
+    margin: 0;
+    text-align: right;
+  }
+
+  &:hover {
+    background: theme.colors('primary-100');
+
+    & > .filtersList {
+      visibility: visible;
+      pointer-events: all;
+    }
+  }
+}
+
+.filtersList {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  color: theme.colors('primary');
+  background: theme.colors('primary-100');
+  border-radius: 0 0 7px 7px;
+  box-shadow: 0px 0px 10px 0px theme.colors('primary-100');
+
+  li {
+    padding: 0.8rem 0;
+
+    &:hover {
+      background: theme.colors('primary-200');
+      border-radius: 7px;
+    }
+  }
+
+}
