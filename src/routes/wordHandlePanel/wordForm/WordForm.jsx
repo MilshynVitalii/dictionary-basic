@@ -1,8 +1,8 @@
-import { useFormik } from 'formik';
-import cn from 'classnames';
+import { useFormik } from "formik";
+import cn from "classnames";
 
-import { fieldsData, formikConfig } from './formConfig';
-import styles from './WordForm.module.scss';
+import { fieldsData, formikConfig } from "./formConfig";
+import styles from "./WordForm.module.scss";
 
 const WordForm = ({
   values = formikConfig.initialValues,
@@ -26,7 +26,9 @@ const WordForm = ({
     blurHandler && blurHandler(e);
   };
 
-  const resetField = (fieldName) => () => formik.setFieldValue(fieldName, '');
+  const handeFieldVisibility = (fieldName) => () =>
+    formik.setFieldValue(fieldName, "");
+
   const checkHasFieldError = (fieldName) =>
     formik.touched[fieldName] && formik.errors[fieldName];
 
@@ -37,16 +39,17 @@ const WordForm = ({
         <fieldset className={styles.form}>
           {fieldsData.map(({ name, type, placeholder, optional }) => (
             <label key={name} className={styles.controls}>
-              {optional && Boolean(!formik.values[name].length) && (
+              {optional && (
                 <>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     className={styles.fieldActive}
                     defaultChecked={!values[optional]}
                   />
+                  {/* eslint-disable-next-line */}
                   <span
                     className={styles.fieldBtnControl}
-                    onClick={resetField(name)}
+                    onClick={handeFieldVisibility(name)}
                   >
                     {`+ ${optional}`}
                   </span>
@@ -70,7 +73,7 @@ const WordForm = ({
             </label>
           ))}
 
-          <input type='submit' value={handle} className={styles.addNewWord} />
+          <input type="submit" value={handle} className={styles.addNewWord} />
         </fieldset>
       </form>
     </section>

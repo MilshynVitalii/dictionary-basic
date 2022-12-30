@@ -25,6 +25,8 @@
     "server": "json-server --watch db.json --port 3004",
     "start": "concurrently \"npm:server\" \"react-scripts start\"",
     "build": "react-scripts build",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -47,6 +49,12 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.8.1"
   }
 }

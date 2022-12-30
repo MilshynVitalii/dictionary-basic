@@ -1,8 +1,8 @@
-import Dictionary from '../components/dictionary/Dictionary';
-import Filters from '../components/filters/Filters';
-import ErrorPopup from '../components/errorPopup/ErrorPopup';
+import Dictionary from "../components/dictionary/Dictionary";
+import Filters from "../components/filters/Filters";
+import ErrorPopup from "../components/errorPopup/ErrorPopup";
 
-import { useGetWordsQuery } from '../store/slices/api';
+import { useGetWordsQuery } from "../store/slices/api";
 
 const Home = () => {
   const {

@@ -1,20 +1,20 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import moment from 'moment';
+import { useParams, Link, useNavigate } from "react-router-dom";
+import moment from "moment";
 
-import ErrorPopup from '../../components/errorPopup/ErrorPopup';
-import { useGetWordQuery, useRemoveWordMutation } from '../../store/slices/api';
+import ErrorPopup from "../../components/errorPopup/ErrorPopup";
+import { useGetWordQuery, useRemoveWordMutation } from "../../store/slices/api";
 
-import styles from './WordDetails.module.scss';
+import styles from "./WordDetails.module.scss";
 
 export const wordDetailsFields = [
-  'Word',
-  'Translation',
-  'Transcription',
-  'Frequency',
-  'Definition',
-  'Synonyms',
-  'Antonyms',
-  'Examples',
+  "Word",
+  "Translation",
+  "Transcription",
+  "Frequency",
+  "Definition",
+  "Synonyms",
+  "Antonyms",
+  "Examples",
 ];
 
 const WordDetails = () => {
@@ -25,15 +25,15 @@ const WordDetails = () => {
 
   const handleRemove = () => {
     removeWord(id);
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <section>
       {isError && <ErrorPopup {...error} />}
-      <h2>Details of "{word.word}"</h2>
+      <h2>{`Details of "${word.word}"`}</h2>
       <div className={styles.container}>
-        <time className={styles.date}>{moment(word.date).format('LLL')}</time>
+        <time className={styles.date}>{moment(word.date).format("LLL")}</time>
         <article className={styles.wordContainer}>
           {wordDetailsFields.map((field) => (
             <dl key={field} className={styles.descrList}>

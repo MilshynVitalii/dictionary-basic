@@ -1,17 +1,17 @@
-import { Link, useMatch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link, useMatch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   filteredBySearchInput,
   filteredByDate,
-} from '../../store/slices/filters';
+} from "../../store/slices/filters";
 
-import { ReactComponent as Menu } from '../../assets/menu.svg';
-import { ReactComponent as Search } from '../../assets/search.svg';
-import styles from './MainContent.module.scss';
+import { ReactComponent as Menu } from "../../assets/menu.svg";
+import { ReactComponent as Search } from "../../assets/search.svg";
+import styles from "./MainContent.module.scss";
 
 const MainContent = ({ openMenu, children }) => {
-  const match = useMatch('/word/:id/:action');
+  const match = useMatch("/word/:id/:action");
   const dispatch = useDispatch();
   const searchValue = useSelector((state) => state.filters.search);
 
@@ -31,8 +31,8 @@ const MainContent = ({ openMenu, children }) => {
             <input
               value={searchValue}
               onChange={onSearch}
-              type='text'
-              placeholder='Search'
+              type="text"
+              placeholder="Search"
               className={styles.searchInput}
             />
           </label>
@@ -40,7 +40,7 @@ const MainContent = ({ openMenu, children }) => {
         <hr />
       </header>
       {!match && (
-        <Link to='/word/new/add' className={styles.newWordLink}>
+        <Link to="/word/new/add" className={styles.newWordLink}>
           +
         </Link>
       )}

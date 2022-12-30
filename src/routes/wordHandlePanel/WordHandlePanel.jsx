@@ -1,12 +1,12 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-import WordAddForm from './WordAddForm';
-import WordChangeForm from './WordChangeForm';
+import WordAddForm from "./WordAddForm";
+import WordChangeForm from "./WordChangeForm";
 
 const WordHandlePanel = () => {
   const { id, action } = useParams();
 
-  if (action === 'edit') {
+  if (action === "edit") {
     return <WordChangeForm wordID={id} />;
   }
 
