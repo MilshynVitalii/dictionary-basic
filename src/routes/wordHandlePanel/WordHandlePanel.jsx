@@ -1,25 +1,16 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import { wordAdded, wordChanged, selectWordById } from '../../store/slices/dictionary';
+import WordAddForm from './WordAddForm';
+import WordChangeForm from './WordChangeForm';
 
-import WordForm from './wordForm/WordForm';
+const WordHandlePanel = () => {
+  const { id, action } = useParams();
 
-function WordHandlePanel() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const word = useSelector(state => selectWordById(state, id));
-
-  let submitHandler = (values) => { dispatch(wordAdded(values)); navigate('/') };
-
-  if(word) {
-    submitHandler = (values) => { dispatch(wordChanged({id, ...values})); navigate(`/word/${id}`) };
-
-    return <WordForm type='change' handle='Change' values={word} submitHandler={submitHandler} />
+  if (action === 'edit') {
+    return <WordChangeForm wordID={id} />;
   }
 
-  return <WordForm type='addition' handle='Add' submitHandler={submitHandler} />
-}
+  return <WordAddForm />;
+};
 
 export default WordHandlePanel;

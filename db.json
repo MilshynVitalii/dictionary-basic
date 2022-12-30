@@ -1,0 +1,64 @@
+{
+  "dictionary": [
+    {
+      "id": 1,
+      "word": "word1",
+      "translation": "слово1",
+      "transcription": "wɜ:d1",
+      "frequency": "2122",
+      "definition": "Definition of the word",
+      "synonyms": "synonyms, of, the, word",
+      "antonyms": "antonyms, of, the, word",
+      "examples": "array of sentences with the word usage examples",
+      "date": 1670407152225
+    },
+    {
+      "id": 2,
+      "word": "word2",
+      "translation": "слово2",
+      "transcription": "wɜ:d2",
+      "frequency": "922",
+      "definition": "Definition of the word",
+      "synonyms": "synonyms, of, the, word",
+      "antonyms": "antonyms, of, the, word",
+      "examples": "array of sentences with the word usage examples",
+      "date": 1630417152305
+    },
+    {
+      "id": 3,
+      "word": "word3",
+      "translation": "слово3",
+      "transcription": "wɜ:d3",
+      "frequency": 2123,
+      "definition": "Definition of the word",
+      "synonyms": "synonyms, of, the, word",
+      "antonyms": "antonyms, of, the, word",
+      "examples": "array of sentences with the word usage examples",
+      "date": 1670412052005
+    },
+    {
+      "id": 4,
+      "word": "word4",
+      "translation": "слово4",
+      "transcription": "wɜ:d4",
+      "frequency": 2124,
+      "definition": "Definition of the word",
+      "synonyms": "synonyms, of, the, word",
+      "antonyms": "antonyms, of, the, word",
+      "examples": "array of sentences with the word usage examples",
+      "date": 1670017151005
+    },
+    {
+      "id": "eklL0lJg4qdBSMTu10iwe",
+      "date": 1670117152005,
+      "word": "new",
+      "translation": "новый",
+      "transcription": "nju",
+      "definition": "definition of the word",
+      "synonyms": "",
+      "antonyms": "",
+      "examples": "",
+      "frequency": "27"
+    }
+  ]
+}

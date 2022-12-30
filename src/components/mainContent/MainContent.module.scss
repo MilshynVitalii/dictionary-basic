@@ -1,6 +1,7 @@
 @use '/src/styles/theme';
 
 .main {
+  position: relative;
   flex-grow: 1;
   background: theme.colors('secondary-100');
   padding: 0 theme.$offset * 2;

@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import dictionaryReducer from './slices/dictionary';
 import filtersReducer from './slices/filters';
+import { api } from './slices/api';
 
 export const store = configureStore({
   reducer: {
-    dictionary: dictionaryReducer,
-    filters: filtersReducer
-  }
+    filters: filtersReducer,
+    [api.reducerPath]: api.reducer
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(api.middleware)
 })

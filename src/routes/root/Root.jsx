@@ -6,19 +6,19 @@ import MainContent from '../../components/mainContent/MainContent';
 
 import styles from './Root.module.scss';
 
-function Root() {
+const Root = () => {
   const [isMenuOpen, setMenuOpen] = useState(true);
 
   const openMenu = () => setMenuOpen(!isMenuOpen);
 
   return (
     <div className={styles.app}>
-        <Header isOpen={isMenuOpen} openMenu={openMenu}/>
-        <MainContent openMenu={openMenu}>
-          <Outlet />
-        </MainContent>
+      <Header isOpen={isMenuOpen} openMenu={openMenu} />
+      <MainContent openMenu={openMenu}>
+        <Outlet />
+      </MainContent>
     </div>
   );
-}
+};
 
 export default Root;
