@@ -1,20 +1,25 @@
-import { useSelector } from 'react-redux';
-
-import { filteredDictionary } from '../store/slices/dictionary';
-
 import Dictionary from '../components/dictionary/Dictionary';
 import Filters from '../components/filters/Filters';
+import ErrorPopup from '../components/errorPopup/ErrorPopup';
 
-function Home() {
-  const dictionary = useSelector(filteredDictionary);
+import { useGetWordsQuery } from '../store/slices/api';
+
+const Home = () => {
+  const {
+    data: dictionary = [],
+    isFetching,
+    error,
+    isError,
+  } = useGetWordsQuery();
 
   return (
     <section>
+      {isError && <ErrorPopup {...error} />}
       <h2>Dictionary</h2>
       <Filters />
-      <Dictionary words={dictionary} />
+      <Dictionary words={dictionary} isFetching={isFetching} />
     </section>
-  )
-}
+  );
+};
 
 export default Home;
