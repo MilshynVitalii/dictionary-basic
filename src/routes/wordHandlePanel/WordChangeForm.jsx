@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-import { useChangeWordMutation, useGetWordQuery } from '../../store/slices/api';
+import { useChangeWordMutation, useGetWordQuery } from "../../store/slices/api";
 
-import ErrorPopup from '../../components/errorPopup/ErrorPopup';
-import WordForm from './wordForm/WordForm';
+import ErrorPopup from "../../components/errorPopup/ErrorPopup";
+import WordForm from "./wordForm/WordForm";
 
 const WordChangeForm = ({ wordID }) => {
   const navigate = useNavigate();
@@ -20,8 +20,8 @@ const WordChangeForm = ({ wordID }) => {
       {isError && <ErrorPopup {...error} />}
 
       <WordForm
-        type='change'
-        handle='Change'
+        type="change"
+        handle="Change"
         values={word}
         submitHandler={submitHandler}
       />

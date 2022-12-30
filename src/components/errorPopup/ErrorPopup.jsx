@@ -1,4 +1,4 @@
-import styles from './ErrorPopup.module.scss';
+import styles from "./ErrorPopup.module.scss";
 
 const ErrorPopup = ({ status, originalStatus, error, data }) => {
   return (

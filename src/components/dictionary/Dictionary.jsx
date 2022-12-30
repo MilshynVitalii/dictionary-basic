@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import moment from "moment";
 
-import { filterDictionary } from '../../store/slices/filters';
+import { filterDictionary } from "../../store/slices/filters";
 
-import styles from './Dictionary.module.scss';
+import styles from "./Dictionary.module.scss";
 
 const Dictionary = ({ words, isFetching }) => {
   const filter = useSelector((state) => state.filters);
@@ -21,7 +21,7 @@ const Dictionary = ({ words, isFetching }) => {
           filteredDictionary.map((word) => (
             <li key={word.id} className={styles.wordWrapper}>
               <div className={styles.wordMeta}>
-                <time>{moment(word.date).format('DD/MM/YYYY')}</time>
+                <time>{moment(word.date).format("DD/MM/YYYY")}</time>
                 <span>frequency: #{word.frequency}</span>
               </div>
               <h4 className={styles.word}>
@@ -37,7 +37,7 @@ const Dictionary = ({ words, isFetching }) => {
           ))
         ) : (
           <li className={styles.noWords}>
-            {isFetching ? 'Words are loading...' : 'No words yet'}
+            {isFetching ? "Words are loading..." : "No words yet"}
           </li>
         )}
       </ul>
