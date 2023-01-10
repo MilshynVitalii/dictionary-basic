@@ -4,7 +4,7 @@ import cn from "classnames";
 import styles from "./Navigation.module.scss";
 
 const Navigation = () => {
-  const linkStyles = ({ isActive }) =>
+  const linkStyles = ({ isActive }: { isActive: boolean }) =>
     cn(styles.link, { [styles.active]: isActive });
 
   return (

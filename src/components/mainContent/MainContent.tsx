@@ -1,3 +1,4 @@
+import { ReactElement, ChangeEvent } from "react";
 import { Link, useMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -5,17 +6,23 @@ import {
   filteredBySearchInput,
   filteredByDate,
 } from "../../store/slices/filters";
+import { RootState } from "../../store";
 
 import { ReactComponent as Menu } from "../../assets/menu.svg";
 import { ReactComponent as Search } from "../../assets/search.svg";
 import styles from "./MainContent.module.scss";
 
-const MainContent = ({ openMenu, children }) => {
+interface MainContentProps {
+  openMenu: () => void;
+  children: ReactElement;
+}
+
+const MainContent = ({ openMenu, children }: MainContentProps) => {
   const match = useMatch("/word/:id/:action");
   const dispatch = useDispatch();
-  const searchValue = useSelector((state) => state.filters.search);
+  const searchValue = useSelector((state: RootState) => state.filters.search);
 
-  const onSearch = (e) => {
+  const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     dispatch(filteredBySearchInput(value));
     value.length === 0 && dispatch(filteredByDate());

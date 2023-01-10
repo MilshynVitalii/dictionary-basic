@@ -1,9 +1,9 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import moment from "moment";
 
-import ErrorPopup from "../../components/errorPopup/ErrorPopup";
 import { useGetWordQuery, useRemoveWordMutation } from "../../store/slices/api";
 
+import ErrorPopup from "../../components/errorPopup/ErrorPopup";
 import styles from "./WordDetails.module.scss";
 
 export const wordDetailsFields = [
@@ -20,17 +20,27 @@ export const wordDetailsFields = [
 const WordDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { data: word = [], isError, error } = useGetWordQuery(id);
+  if (!id) throw new Error("Word not found");
+
+  const { data: word, isError, error } = useGetWordQuery(id);
   const [removeWord] = useRemoveWordMutation();
 
   const handleRemove = () => {
     removeWord(id);
+
     navigate("/");
   };
 
+  if (!word)
+    return (
+      <section>
+        <h2>No word found</h2>
+      </section>
+    );
+
   return (
     <section>
-      {isError && <ErrorPopup {...error} />}
+      {isError && <ErrorPopup error={error} />}
       <h2>{`Details of "${word.word}"`}</h2>
       <div className={styles.container}>
         <time className={styles.date}>{moment(word.date).format("LLL")}</time>
@@ -40,7 +50,7 @@ const WordDetails = () => {
               <div className={styles.descr}>
                 <dt className={styles.descrName}>{field}:</dt>
                 <dd className={styles.descrInfo}>
-                  {word[field.toLowerCase()]}
+                  {word[field.toLowerCase() as keyof typeof word]}
                 </dd>
               </div>
             </dl>

@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Dictionary } from "../types";
 
 const filterTypes = {
   DATE: "date",
@@ -23,32 +24,36 @@ const filtersSlice = createSlice({
       state.type = filterTypes.FREQUENCY;
       state.frequency = !state.frequency;
     },
-    filteredBySearchInput(state, action) {
+    filteredBySearchInput(state, action: PayloadAction<string>) {
       state.type = filterTypes.SEARCH;
       state.search = action.payload;
     },
   },
 });
 
-const setFrequency = (number) => number || Number.MAX_SAFE_INTEGER;
-export const filterDictionary = (dictionary, filter, filterMeta) => {
+const setFrequency = (number: number) => number || Number.MAX_SAFE_INTEGER;
+export const filterDictionary = (
+  dictionary: Dictionary,
+  filter: string,
+  metaData: string | boolean
+) => {
   const arr = [...dictionary];
 
   switch (filter) {
     case filterTypes.DATE:
-      return arr.sort(
-        (a, b) => (a[filter] - b[filter]) * (filterMeta ? -1 : 1)
-      );
+      return arr.sort((a, b) => (a.date - b.date) * (metaData ? -1 : 1));
     case filterTypes.FREQUENCY:
       return arr.sort(
         (a, b) =>
-          (setFrequency(a[filter]) - setFrequency(b[filter])) *
-          (filterMeta ? 1 : -1)
+          (setFrequency(Number(a.frequency)) -
+            setFrequency(Number(b.frequency))) *
+          (metaData ? 1 : -1)
       );
     case filterTypes.SEARCH:
       return arr.filter(
         ({ word, translation }) =>
-          word.startsWith(filterMeta) || translation.startsWith(filterMeta)
+          word.startsWith(metaData as string) ||
+          translation.startsWith(metaData as string)
       );
     default:
       return arr;

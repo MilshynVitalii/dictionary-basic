@@ -2,6 +2,7 @@ import * as Yup from "yup";
 
 const formikConfig = {
   initialValues: {
+    id: "",
     word: "",
     translation: "",
     transcription: "",
@@ -10,6 +11,7 @@ const formikConfig = {
     antonyms: "",
     examples: "",
     frequency: "",
+    date: NaN,
   },
   validationSchema: Yup.object({
     word: Yup.string()

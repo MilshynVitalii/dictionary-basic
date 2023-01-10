@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, FocusEvent } from "react";
+import { FormikHelpers } from "formik";
 import { nanoid } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 
+import { Word } from "../../store/types";
 import {
   useAddWordMutation,
   useGetWordByNameQuery,
@@ -11,20 +13,20 @@ import WordForm from "./wordForm/WordForm";
 
 const WordAddForm = () => {
   const navigate = useNavigate();
-  const [newWord, setNewWord] = useState(null);
+  const [newWord, setNewWord] = useState("");
   const { data, isFetching } = useGetWordByNameQuery(newWord);
   const [addWord] = useAddWordMutation();
 
-  const blurHandler = (e) => {
+  const blurHandler = (e: FocusEvent<HTMLInputElement>) => {
     if (e.target.name === "word") {
       setNewWord(e.target.value);
     }
   };
 
-  const submitHandler = (values, actions) => {
+  const submitHandler = (values: Word, actions: FormikHelpers<Word>) => {
     if (isFetching) return false;
 
-    if (data.length) {
+    if (data && data.length) {
       actions.setFieldError(
         "word",
         "Your dictionary already includes this word"
@@ -33,7 +35,7 @@ const WordAddForm = () => {
       return false;
     }
 
-    addWord({ id: nanoid(), date: Date.now(), ...values });
+    addWord({ ...values, id: nanoid(), date: Date.now() });
     navigate("/");
 
     return true;
