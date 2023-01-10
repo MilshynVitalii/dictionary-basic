@@ -6,7 +6,7 @@ import WordChangeForm from "./WordChangeForm";
 const WordHandlePanel = () => {
   const { id, action } = useParams();
 
-  if (action === "edit") {
+  if (action === "edit" && id) {
     return <WordChangeForm wordID={id} />;
   }
 

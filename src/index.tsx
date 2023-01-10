@@ -8,7 +8,12 @@ import { store } from "./store";
 
 import "./styles/index.scss";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const rootElem = document.getElementById("root");
+
+if (!rootElem) throw new Error("Not root element is provided");
+
+const root = ReactDOM.createRoot(rootElem);
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>

@@ -18,7 +18,7 @@
       "translation": "слово2",
       "transcription": "wɜ:d2",
       "frequency": "922",
-      "definition": "Definition of the word",
+      "definition": "definition of the word",
       "synonyms": "synonyms, of, the, word",
       "antonyms": "antonyms, of, the, word",
       "examples": "array of sentences with the word usage examples",
@@ -47,18 +47,6 @@
       "antonyms": "antonyms, of, the, word",
       "examples": "array of sentences with the word usage examples",
       "date": 1670017151005
-    },
-    {
-      "id": "eklL0lJg4qdBSMTu10iwe",
-      "date": 1670117152005,
-      "word": "new",
-      "translation": "новый",
-      "transcription": "nju",
-      "definition": "definition of the word",
-      "synonyms": "",
-      "antonyms": "",
-      "examples": "",
-      "frequency": "27"
     }
   ]
 }

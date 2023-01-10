@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 
+import { RootState } from "../../store";
 import {
   filteredByDate,
   filteredByFrequency,
@@ -10,7 +11,7 @@ import styles from "./Filters.module.scss";
 
 const Filters = () => {
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filters);
+  const filter = useSelector((state: RootState) => state.filters);
 
   const handleDateFilter = () => dispatch(filteredByDate());
   const handleFrequencyFilter = () => dispatch(filteredByFrequency());
@@ -19,7 +20,13 @@ const Filters = () => {
     <section className={styles.filters}>
       <p>Filtered by {filter.type}:</p>
       <div className={styles.filterContainer}>
-        <p>{setFilterFieldText(filter.type, filter[filter.type])} &#9660;</p>
+        <p>
+          {setFilterFieldText(
+            filter.type,
+            filter[filter.type as keyof typeof filter]
+          )}{" "}
+          &#9660;
+        </p>
         <ul className={styles.filtersList}>
           <li>
             <button className={styles.filterBtn} onClick={handleDateFilter}>
@@ -40,7 +47,7 @@ const Filters = () => {
   );
 };
 
-function setFilterFieldText(type, isMinToMax) {
+function setFilterFieldText(type: string, isMinToMax: boolean | string) {
   switch (type) {
     case "date":
       return isMinToMax ? "new first" : "old first";

@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <section>
-      {isError && <ErrorPopup {...error} />}
+      {isError && <ErrorPopup error={error} />}
       <h2>Dictionary</h2>
       <Filters />
       <Dictionary words={dictionary} isFetching={isFetching} />

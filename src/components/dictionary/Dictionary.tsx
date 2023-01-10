@@ -2,16 +2,24 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
+import { RootState } from "../../store";
+import { Dictionary as DictionaryType } from "../../store/types";
 import { filterDictionary } from "../../store/slices/filters";
 
 import styles from "./Dictionary.module.scss";
 
-const Dictionary = ({ words, isFetching }) => {
-  const filter = useSelector((state) => state.filters);
+interface Dictionary {
+  words: DictionaryType;
+  isFetching: boolean;
+}
+
+const Dictionary = ({ words, isFetching }: Dictionary) => {
+  const filter = useSelector((state: RootState) => state.filters);
+
   const filteredDictionary = filterDictionary(
     words,
     filter.type,
-    filter[filter.type]
+    filter[filter.type as keyof typeof filter]
   );
 
   return (
