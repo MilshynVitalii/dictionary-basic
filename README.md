@@ -1,24 +1,17 @@
-# Getting Started with Create React App
+# Project details
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal dictionary. Allows you to add new words with detailed information: frequency, transcription, definition etc. or change existing one. The app uses filters and search field to navigate by words.
+Project is growing! 'Practice exercises' page will be added soon.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-## Project details
+## The project is build with:
 
 1. TypeScript
 2. Css modules
-3. Used custome Sass theme
+3. Custome theme with sass preprocessor
 4. Redux Toolkit, RTK Query
 5. React Router v6+
 6. json-server
+
+### `npm start`
+
+Runs the app in the development mode
